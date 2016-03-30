@@ -1,0 +1,14 @@
+
+  Task Description : <b> <%= @task.description%></b><br>
+  Task Priority : 
+  <% if @task.priority == 1 %> <b> High </b>
+   <% elsif @task.priority == 2 %> <b> Medium </b>
+    <% elsif @task.priority == 3 %> <b> Low  </b><%end%> <br>
+  Task Completed? :<b> <%= @task.completed %> </b><br />
+  Task List: <a href="/lists/<%=@task.list.id%>"><%= @task.list.name %></a> <br/><br/>
+  <a href="/tasks/<%=@task.id%>/edit">Edit Task</a> <br><br>
+  <form action="/tasks/<%=@task.id%>/delete" method="post">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input  type="submit" value='Delete Task'>
+  </form></p>
+  

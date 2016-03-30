@@ -1,0 +1,19 @@
+
+<% current_user.lists.each do |list| %>
+  <a href="/lists/<%=list.id%>"><%= list.name %></a><br></br>
+  <ul>
+      <% list.tasks.each do |task| %>
+          <% if task.priority == 1 %>
+            <li style="color:#fd6461"><span><a href="/tasks/<%=task.id%>"><%= task.description %></a></span></li>
+          <% elsif task.priority == 2 %>
+           <li style="color:#f7a650"><span><a href="/tasks/<%=task.id%>"><%= task.description %></a></span></li>
+          <% elsif task.priority == 3 %>
+            <li style="color:#f4cd56"><span><a href="/tasks/<%=task.id%>"><%= task.description %></a></span></li>
+          <% end%>
+      <% end%>
+  </ul>
+    <br/><br/>
+    <% end %>
+
+    
+  

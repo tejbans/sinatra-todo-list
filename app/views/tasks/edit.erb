@@ -1,0 +1,24 @@
+<h1>Edit Task</h1>
+
+<form action="/tasks/<%=@task.id %>" method="POST">
+  <label> Task description </label>
+  <input type="text" name="description" value="<%=@task.description %>"> </br>
+
+  <label> Task Priority: </label>
+  <input  type="radio" name="priority" value="1" <%= 'checked' if @task.priority == 1 %> > High</input>
+  <input  type="radio" name="priority" value="2" <%= 'checked' if @task.priority == 2 %> > Medium</input>
+  <input  type="radio" name="priority" value="3" <%= 'checked' if @task.priority == 3 %> > Low</input>
+  <br><br>
+<label> Task status: </label>
+  <input  type="radio" name="completed" value="false" <%= 'checked' if @task.completed == false %>>Not Complete</input>
+  <input  type="radio" name="completed" value="true" <%= 'checked' if @task.completed == true %>>Completed </input>
+   <br><br>
+  <label> Which List does this belong in? </label>
+  <select name="list_id">
+    <% current_user.lists.each do |list| %>
+      <option value=<%=list.id %> <%= "selected" if list.id==@task.list.id %> ><%= list.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Update">
+</form>

@@ -1,0 +1,26 @@
+<h3>Add a New Task</h3>
+
+<form action="/tasks" method="POST">
+  <label> Task Description </label>
+  <input type="text" name="description"> </br></br>
+
+  <label> Task Priority </label>
+   
+    <input  type="radio" name="priority" value="1" checked> High (Red)</input>
+    <input  type="radio" name="priority" value="2"> Medium (Orange)</input>
+    <input  type="radio" name="priority" value="3"> Low (Yellow)</input>
+    <br><br>
+    <label> Task Status </label>
+    <input  type="radio" name="completed" value="false" checked> Not Complete 
+    <input  type="radio" name="completed" value="true" > Completed </br></br>
+
+  <label> Which List does this belong in? </label>
+  <select name="list_id">
+    <% current_user.lists.each do |list| %>
+        binding.pry
+      <option value=<%=list.id %>><%= list.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Create">
+</form>

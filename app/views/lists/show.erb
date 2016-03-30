@@ -1,0 +1,26 @@
+
+<p><h4><%= @list.name %><br /></h4></p>
+
+  <% if @list.tasks.empty? %>
+    <p> (No tasks yet) </p>
+    <%else%>
+      <ul >
+      <% @list.tasks.each do |task| %>
+          <% if task.priority == 1 %>
+            <li style="color:#fd6461"><span><a href="/tasks/<%=task.id%>"><%= task.description %></a></span></li>
+          <% elsif task.priority == 2 %>
+           <li style="color:#f7a650"><span><a href="/tasks/<%=task.id%>"><%= task.description %></a></span></li>
+          <% elsif task.priority == 3 %>
+            <li style="color:#f4cd56"><span><a href="/tasks/<%=task.id%>"><%= task.description %></a></span></li>
+          <% end%>
+      <% end%>
+      </ul>
+  <% end%>
+  <p>
+  <a href="/lists/<%=@list.id%>/edit">Edit List</a> 
+  <form action="/lists/<%=@list.id%>/delete" method="post">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input  type="submit" value='Delete List'>
+    </form></p>
+  </br>
+  </br>

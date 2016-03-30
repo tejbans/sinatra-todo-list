@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ToDo Lists</title>
+    <style>
+      li {
+        font-size: 36px;
+        line-height: 36px;
+        
+      }
+      li span {
+        font-size: 15px;
+        vertical-align:middle;
+      }
+      div.notice {
+        color:red;
+      }
+    </style>
+    
+  </head>
+  <body>
+ 
+      <% if logged_in? %>
+        <a href="/lists"> View my Lists </a>&nbsp&nbsp&nbsp
+        <a href="/lists/new"> Create New List </a>&nbsp&nbsp&nbsp
+        <a href="/tasks/new"> Create New Task </a>&nbsp&nbsp&nbsp
+        <a href="/logout"> Log Out </a>
+        <p><h3>Welcome, <%=current_user.username %></h3></p>
+
+      <% else %>
+        <a href="/signup">Sign Up</a>&nbsp&nbsp&nbsp
+        <a href="/login"> Sign In </a>
+      <%end %>
+
+     <div class="notice">
+      <% if session[:notice] %>
+        <%= session[:notice] %><br><br>
+        <% end %>
+        <%= session[:notice] = "" %>
+      </div>
+
+      <%= yield %> 
+   
+    
+  </body>
+</html>

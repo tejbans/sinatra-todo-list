@@ -1,0 +1,9 @@
+<h1>Edit <%= @list.name %></h1>
+
+<form action="/lists/<%=@list.id %>" method="POST">
+  <label> List Name </label>
+  <input type="text" name="name" value="<%=@list.name %>"> </br>
+
+
+  <input type="submit" value="Update">
+</form>
